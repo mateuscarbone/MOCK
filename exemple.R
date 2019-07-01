@@ -1,6 +1,7 @@
 file.choose()
 source("C:\\Users\\Mateus\\Documents\\MOCK_R\\codigos_MOCK.R")
 library(plotly)
+library(mclust)
 # dados ficticios ---------------------------------------------------------
 
 
