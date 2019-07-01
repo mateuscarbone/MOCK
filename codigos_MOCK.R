@@ -1,3 +1,6 @@
+library(parallel)
+library(spatstat)
+library(Rfast)
 
 # Cruzamento --------------------------------------------------------------
 
@@ -594,11 +597,6 @@ MOCK <- function(data,n.sim=5){
 }
 
 
-library(parallel)
-library(spatstat)
-library(mclust)
-library(NbClust)
-library(Rfast)
 
 
 
