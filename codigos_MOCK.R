@@ -68,7 +68,7 @@ interes <- function(obj,diss){
 }
 
 
-# Muta��o -----------------------------------------------------------------
+# Mutação -----------------------------------------------------------------
 mut.f <- function (vrep,mdiss.ord) {
   n <- length(vrep)
   pos.d <- vector("integer",length = n)
@@ -102,7 +102,7 @@ mut.f <- function (vrep,mdiss.ord) {
 
 
 
-# Solu��es liga��o ---------------------------------------------------------
+# Soluções ligação ---------------------------------------------------------
 
 
 gsoll <- function(p.int,vrep){
@@ -118,7 +118,7 @@ gsoll <- function(p.int,vrep){
 }
 
 
-# Classifica��o -----------------------------------------------------------
+# Classificação -----------------------------------------------------------
 
 
 cls <- function(g){
@@ -207,7 +207,7 @@ s.conect <- function(gp,mdiss.o) {
 # }
 
 
-# Compacta��o -------------------------------------------------------------
+# Compactação -------------------------------------------------------------
 
 
 
@@ -256,7 +256,7 @@ compac <- function(data,grup){
 
 
 
-# Codifica��o K-Means -----------------------------------------------------
+# Codificação K-Means -----------------------------------------------------
 
 
 
@@ -274,7 +274,7 @@ kme.s <- function(gg,snp,diss.o){
 
 
 
-# Solu��es iniciais K-Means -----------------------------------------------
+# Soluções iniciais K-Means -----------------------------------------------
 
 
 
@@ -289,7 +289,7 @@ s.km <- function(data,fsize,n.si,diss.o,agm){
 }
 
 
-# Solu��es n�o dominadas --------------------------------------------------
+# Soluções não dominadas --------------------------------------------------
 
 
 
@@ -412,7 +412,7 @@ dsimu <- function(d) {
     ls[[i]] <- runif(nr,min[i],max[i])
   }
   simd<-matrix(unlist(ls),ncol=nc)
-  simd<- simd %*% t(pca$rotation) + pca$center # tranformando para o espaço original
+  simd<- simd %*% t(pca$rotation) + pca$center # tranformando para o espaÃ§o original
   return(simd)
 }
 
@@ -428,17 +428,17 @@ dsimu <- function(d) {
 #     ls[[i]] <- runif(nr,min[i],max[i])
 #   }
 #   simd<-matrix(unlist(ls),ncol=nc)
-#   simd<- simd %*% t(pca$loadings) + pca$center # tranformando para o espaço original
+#   simd<- simd %*% t(pca$loadings) + pca$center # tranformando para o espaÃ§o original
 #   return(simd)
 # }
 
-# probabilidade muta��o ---------------------------------------------------
+# probabilidade mutação ---------------------------------------------------
 
 pm<-function (X,n) 1/n+(X/n)^2
 
 
 
-# nomaliza��o -------------------------------------------------------------
+# nomalização -------------------------------------------------------------
 
 normalize <- function(x) {
   return((x- min(x)) /(max(x)-min(x)))
@@ -466,7 +466,7 @@ sol.front <- function (data.cod,kcls=25) {
   l.int<-interes(vrep,diss)
   #n.si = numero de solu??es iniciais
   n.si <- min((fsize*.5-1),length(l.int$p.int))
-  #cjl = geração dos possiveis vetores removendo os links interessantes
+  #cjl = geraÃ§Ã£o dos possiveis vetores removendo os links interessantes
   cjl <- gsoll(l.int$p.int,vrep)
   #solu??es iniciais k-meas
   sikm <-s.km(data,fsize,n.si,diss.o,cjl[[1]])
@@ -503,9 +503,9 @@ sol.front <- function (data.cod,kcls=25) {
     for (i in 1:10){
       pos<-which(sfnd$area%in%sample(sfnd$area,2)) ### seleciona duas areas aleaorias
       msqz <- which.min(sfnd$sqf[pos]) ## menor squeeze factor
-      pri <- sfnd$area[pos[msqz]] ## seleciona a área
-      sas <- which(sfnd$areac%in%pri) ## seleciona as soluções
-      if(length(sas)<=1){ ## se for unica é ela mesma, senão sorteia-se uma
+      pri <- sfnd$area[pos[msqz]] ## seleciona a Ã¡rea
+      sas <- which(sfnd$areac%in%pri) ## seleciona as soluÃ§Ãµes
+      if(length(sas)<=1){ ## se for unica Ã© ela mesma, senÃ£o sorteia-se uma
         PIt[[i]] <- PE[[sas]]
       }else{
         PIt[[i]] <- PE[[sample(sas,size=1)]]
@@ -524,7 +524,7 @@ sol.front <- function (data.cod,kcls=25) {
         PI[[i]] <- mut.f(PIt[[ind]],diss.o)
       }
     }
-    #### avaliuação PI
+    #### avaliuaÃ§Ã£o PI
     gpi <- lapply(PI,cls)
     con.pi <- s.conect(gpi,diss.o[1:10,])
     comp.pi <- sapply(gpi,compac,data=data)
@@ -619,7 +619,7 @@ plot.mock <- function(obj.mock,n.solu=1,nome=NULL){
     geom_point(data=obj.mock$sol.data,aes(y=compa,x=conec),alpha=.8,col="red")+
     geom_line(data=best,aes(y=compa,x=conec,group=grupo))+
     theme_bw()+
-    xlab("Conectividade")+ylab("Compacta��o")
+    xlab("Conectividade")+ylab("Compactação")
   if(!is.null(nome)){ 
     obj<- obj+ggtitle(nome)}
   print(obj)
