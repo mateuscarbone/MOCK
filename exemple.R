@@ -1,4 +1,3 @@
-file.choose()
 source("codigos_MOCK.R")
 library(plotly)
 library(mclust)
